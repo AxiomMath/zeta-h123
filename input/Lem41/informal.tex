@@ -1,0 +1,150 @@
+\documentclass[11pt]{amsart}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{thmtools}
+\usepackage{cleveref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem*{definition}{Definition}
+\newtheorem*{question}{Question}
+\newtheorem*{answer}{Answer}
+
+\newcommand{\Tdk}{\mathcal{T}_{d,k-1}}
+
+
+\begin{document}
+\section{Preliminaries}\label{sec:prelim}
+We state the elementary preliminaries required for the argument.
+
+\subsection{Lucas theorem and its variants}
+We record the elementary digit facts used throughout.
+
+\begin{definition}[Carry-free addition]\label{def:carryfree}
+For nonnegative integers $x_1,\ldots,x_r$, we write
+\[
+  x_1\oplus x_2\oplus\cdots\oplus x_r
+\]
+when the addition is carry-free in base-$p$.  Equivalently, if we have
+\[
+  x_i=\sum_{e\geq 0}x_{i,e}p^e
+  \qquad {\text {\rm and}}\qquad 0\leq x_{i,e}\leq p-1,
+\]
+then we have
+\[
+  \sum_{i=1}^r x_{i,e}\leq p-1
+  \qquad\text{for every }e.
+\]
+\end{definition}
+
+The first tool is Lucas' theorem in its binomial form,
+which provides a bridge between nonvanishing modulo $p$ and carry-free decompositions.
+
+\begin{lemma}[Lucas' theorem]\label{lem:Lucas-binomial}
+Let $m,n\geq 0$, and write
+\[
+  m=\sum m_ep^e\qquad {\text {\rm and}}\qquad n=\sum n_ep^e,
+  \qquad 0\leq m_e,n_e\leq p-1.
+\]
+Then
+\[
+  \binom{n}{m}\equiv\prod_e\binom{n_e}{m_e}\pmod p.
+\]
+In particular, $\binom{n}{m}\not\equiv 0\pmod p$ if and only if $m_e\leq n_e$ for every $e$;
+that is, if $m \oplus (n-m)$ is carry-free in base $p$.
+\end{lemma}
+
+We will mostly use the following multinomial form.
+
+\begin{lemma}[Lucas' theorem, multinomial form]\label{lem:mult-Lucas}
+Let $R=r_1+\cdots+r_m$.  Then
+\[
+  \binom{R}{r_1,\ldots,r_m}\not\equiv 0\pmod p
+\]
+if and only if $r_1 \oplus r_2 \oplus \dots \oplus r_m$ is carry-free in base-$p$.
+\end{lemma}
+
+\begin{proof}
+Write the multinomial coefficient as a product of binomial coefficients:
+\[
+  \binom{R}{r_1,\ldots,r_m}
+  =\binom{r_1+\cdots+r_m}{r_m}
+   \binom{r_1+\cdots+r_{m-1}}{r_{m-1}}\cdots
+   \binom{r_1+r_2}{r_2}.
+\]
+Each factor is nonzero modulo $p$ exactly when the indicated addition has no carry.
+This is equivalent to saying that, at each base-$p$ digit position,
+the digits of $r_1,\ldots,r_m$ add to at most $p-1$.
+\end{proof}
+
+\subsection{Finite field power sums}
+The other elementary input is the standard finite-field power sum.
+It is responsible for the divisibility conditions by $q-1$ that appear
+throughout the later minimization problems.
+
+\begin{lemma}[Finite-field power sums]\label{lem:field-sums}
+For $m\geq 0$,
+\[
+  \sum_{x\in\mathbb{F}_q}x^m=
+  \begin{cases}
+    -1, & m>0\text{ and }(q-1)\mid m,\\
+    0, & \text{otherwise}.
+  \end{cases}
+\]
+Here we consider $0^0=1$ for $m=0$.
+\end{lemma}
+
+\begin{proof}
+If $m=0$, the sum is $q$, which is $0$ in characteristic $p$.
+If $m>0$, the zero term contributes $0$,
+and the nonzero elements of $\mathbb{F}_q$ form a cyclic group of order $q-1$.
+The sum of the $m$th powers in this cyclic group is $0$ unless $(q-1)\mid m$;
+in that case it is instead $q-1=-1$ in $\mathbb{F}_q$.
+\end{proof}
+
+
+\section{Main proof}
+Write a monic polynomial of degree $d$ as
+\[
+  a=t^d+\theta_1t^{d-1}+\cdots+\theta_d\qquad \text{and} \qquad \theta_i\in\mathbb{F}_q.
+\]
+Then
+\[
+  a^{-k}=t^{-dk}(1+\theta_1t^{-1}+\cdots+\theta_dt^{-d})^{-k}.
+\]
+Expanding the last factor gives
+\begin{align*}
+S_d(k)
+&=t^{-dk}
+  \sum_{\theta_1,\ldots,\theta_d\in\mathbb{F}_q}
+  \sum_{m_1,\ldots,m_d\geq 0}
+  \binom{-k}{m_1+\cdots+m_d}
+  \binom{m_1+\cdots+m_d}{m_1,\ldots,m_d}\\
+&\qquad\qquad\qquad\cdot
+  \theta_1^{m_1}\cdots\theta_d^{m_d}
+  t^{-(m_1+2m_2+\cdots+dm_d)}.
+\end{align*}
+
+By \Cref{lem:field-sums}, summing over $\theta_i\in\mathbb{F}_q$ kills every term except those with
+\[
+  m_i>0\qquad {\text {\rm and}}\qquad (q-1)\mid m_i.
+\]
+Next we turn attention to the binomial and multinomial coefficient.
+Put $y \coloneq m_1 + \dots + m_d$.
+The identity
+\[
+  \binom{-k}{y}=(-1)^y\binom{k+y-1}{y}
+\]
+shows, by \Cref{lem:Lucas-binomial},
+that $\binom{-k}{y}$ is nonzero modulo $p$ if and only if $(k-1)+y$ is carry-free.
+By \Cref{lem:mult-Lucas},
+the multinomial coefficient is nonzero modulo $p$ if and only if $m_1+\cdots+m_d=y$ is carry-free.
+These two carry-free conditions hold simultaneously if and only if the combined addition
+\[
+  (k-1)\oplus m_1\oplus\cdots\oplus m_d
+\]
+is carry-free, i.e., if $(m_1, \dots, m_d) \in \Tdk$.
+\end{document}

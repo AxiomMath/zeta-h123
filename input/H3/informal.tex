@@ -1,0 +1,40 @@
+\documentclass[11pt]{amsart}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\begin{document}
+
+Throughout, all digit and carry conditions are in base $p$.
+For nonnegative integers $x_1,\ldots,x_r$, we write
+$x_1\oplus x_2\oplus\cdots\oplus x_r$ to indicate that the addition
+$x_1+x_2+\cdots+x_r$ has no carries in base $p$; equivalently,
+at every base-$p$ digit position, the digits of $x_1,\ldots,x_r$ sum to at most $p-1$.
+
+For integers $d\geq 1$ and $j\geq 0$, let $\mathcal{T}_{d,j}$ denote the set of
+$d$-tuples $(m_1,\ldots,m_d)$ of positive multiples of $q-1$ such that
+$j\oplus m_1\oplus\cdots\oplus m_d$ holds, and define
+\[
+  M_d(j) \coloneq \min_{(m_1,\ldots,m_d)\in\mathcal{T}_{d,j}}\left(m_1+2m_2+\cdots+dm_d\right),
+\]
+so that $s_d(k)=dk+M_d(k-1)$.
+
+By definition,
+\[
+  s_d(k)=dk+M_d(k-1),
+  \qquad
+  s_d(k+1)=d(k+1)+M_d(k).
+\]
+Therefore
+\begin{equation}\label{eq:H3-difference}
+  s_d(k+1)-s_d(k)=d+M_d(k)-M_d(k-1).
+\end{equation}
+If $p\nmid k$, then the units digit of $k$ in base-$p$ is nonzero.
+Passing from $k$ to $k-1$ lowers only that units digit by $1$ and leaves all higher digits unchanged.
+Hence
+\[
+  k\oplus m_1\oplus\cdots\oplus m_d \text{ carry-free}
+  \implies (k-1)\oplus m_1\oplus\cdots\oplus m_d \text{ carry-free}.
+\]
+This implies $\mathcal T_{d,k} \subseteq \mathcal T_{d,k-1}$ and we have
+\[ M_d(k)\geq M_d(k-1).  \]
+Hence \eqref{eq:H3-difference} gives $s_d(k+1)-s_d(k)\geq d>0$ and we're done.
+
+\end{document}

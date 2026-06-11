@@ -1,0 +1,307 @@
+\documentclass[11pt]{amsart}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{thmtools}
+\usepackage{cleveref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem*{definition}{Definition}
+\newtheorem*{question}{Question}
+\newtheorem*{answer}{Answer}
+
+\newcommand{\Tdk}{\mathcal{T}_{d,k-1}}
+
+\DeclareMathOperator{\Slots}{Slots}
+
+\begin{document}
+\section{Preliminaries}
+Throughout this document, $p$ is a prime and $q=p$;
+all digit and carry conditions are in base $p$.
+We state the elementary preliminaries required for this paper.
+
+\subsection{Lucas theorem and its variants}
+We record the elementary digit facts used throughout.
+
+\begin{definition}[Carry-free addition]\label{def:carryfree}
+For nonnegative integers $x_1,\ldots,x_r$, we write
+\[
+  x_1\oplus x_2\oplus\cdots\oplus x_r
+\]
+when the addition is carry-free in base-$p$.  Equivalently, if we have
+\[
+  x_i=\sum_{e\geq 0}x_{i,e}p^e
+  \qquad {\text {\rm and}}\qquad 0\leq x_{i,e}\leq p-1,
+\]
+then we have
+\[
+  \sum_{i=1}^r x_{i,e}\leq p-1
+  \qquad\text{for every }e.
+\]
+\end{definition}
+
+The first tool is Lucas' theorem in its binomial form,
+which provides a bridge between nonvanishing modulo $p$ and carry-free decompositions.
+
+\begin{lemma}[Lucas' theorem]\label{lem:Lucas-binomial}
+Let $m,n\geq 0$, and write
+\[
+  m=\sum m_ep^e\qquad {\text {\rm and}}\qquad n=\sum n_ep^e,
+  \qquad 0\leq m_e,n_e\leq p-1.
+\]
+Then
+\[
+  \binom{n}{m}\equiv\prod_e\binom{n_e}{m_e}\pmod p.
+\]
+In particular, $\binom{n}{m}\not\equiv 0\pmod p$ if and only if $m_e\leq n_e$ for every $e$;
+that is, if $m \oplus (n-m)$ is carry-free in base $p$.
+\end{lemma}
+
+We also record the following multinomial form.
+
+\begin{lemma}[Lucas' theorem, multinomial form]\label{lem:mult-Lucas}
+Let $R=r_1+\cdots+r_m$.  Then
+\[
+  \binom{R}{r_1,\ldots,r_m}\not\equiv 0\pmod p
+\]
+if and only if $r_1 \oplus r_2 \oplus \dots \oplus r_m$ is carry-free in base-$p$.
+\end{lemma}
+
+\begin{proof}
+Write the multinomial coefficient as a product of binomial coefficients:
+\[
+  \binom{R}{r_1,\ldots,r_m}
+  =\binom{r_1+\cdots+r_m}{r_m}
+   \binom{r_1+\cdots+r_{m-1}}{r_{m-1}}\cdots
+   \binom{r_1+r_2}{r_2}.
+\]
+Each factor is nonzero modulo $p$ exactly when the indicated addition has no carry.
+This is equivalent to saying that, at each base-$p$ digit position,
+the digits of $r_1,\ldots,r_m$ add to at most $p-1$.
+\end{proof}
+
+\subsection{Block-rearrangement inequality}
+\label{sec:block}
+Throughout this section fix a positive integer $n$.
+Let $M$ be any infinite multiset of positive real numbers, listed in nondecreasing order as
+\[ c_1\leq c_2\leq c_3\leq\cdots.  \]
+We will refer to the $c_i$ as \emph{slots} (that we imagine putting weights in).
+
+The block-rearrangement inequality is an easy variant of the rearrangement inequality.
+Let's describe it in words before introducing the relevant notation.
+\begin{question}
+  Let $d \ge 1$.
+  Suppose we need to pick out $dn$ elements of $M$ and compute a weighted sum,
+  where $n$ of the elements have weight $1$,
+  $n$ of the elements have weight $2$, \dots,
+  and $n$ elements have weight $d$.
+  How can we minimize this weighted sum?
+\end{question}
+\begin{answer}
+  This is easy:
+  the rearrangement inequality says we should take the $dn$ smallest elements of $M$,
+  and pair the largest weights with the smallest numbers.
+\end{answer}
+We introduce notation corresponding to what we just described.
+For $r\geq 1$, let $B_r(M)$ be the $r$th consecutive block of $n$ elements:
+\[
+  B_r(M) \coloneq \{c_{(r-1)n+1},\ldots,c_{rn}\},
+\]
+and put
+\[
+  \beta_r(M) \coloneq \sum_{c\in B_r(M)}c.
+\]
+For $d\geq 1$, define
+\[
+  \Phi_d(M) \coloneq d\beta_1(M)+(d-1)\beta_2(M)+\cdots+\beta_d(M),
+\]
+and set $\Phi_0(M) \coloneq 0$.
+The point is that $\Phi_d(M)$ is the minimum we are describing:
+
+\begin{lemma}[Block minimization]\label{lem:H2-block-min}
+Let $T_1,\ldots,T_d$ be pairwise disjoint finite submultisets of $M$ with $|T_i|=n$ for every $i$.
+Then
+\[
+  \sum_{i=1}^d i\sum_{c\in T_i}c\geq \Phi_d(M).
+\]
+Equality holds precisely when the largest weight $d$ receives the first block $B_1(M)$,
+the next largest weight receives $B_2(M)$, and so on, up to interchanging equal-valued slots.
+\end{lemma}
+
+\begin{proof}
+The union $T_1\cup\cdots\cup T_d$ contains $dn$ elements.
+A minimizer must use the $dn$ smallest elements of $M$:
+if a selected slot $a$ is larger than an unselected slot $b$,
+then replacing $a$ by $b$ in the same $T_i$ lowers the weighted sum by $i(a-b)>0$.
+
+Now distribute these first $dn$ slots among the $T_i$.
+If $i<j$, $a\in T_i$, $b\in T_j$, and $a<b$,
+then swapping $a$ and $b$ changes the contribution from $ia+jb$ to $ib+ja$.  The decrease is
+\[
+  (ia+jb)-(ib+ja)=(j-i)(b-a)>0.
+\]
+Thus a minimizer must assign smaller slots to larger weights.
+Therefore weight $d$ receives the first block, weight $d-1$ receives the second block, and so on.
+This gives the value $\Phi_d(M)$.
+The only ambiguity comes from slots with equal numerical values, whose interchange does not affect the sum.
+\end{proof}
+
+To prove H2, we need a slightly more flexible form of the block-minimization lemma.
+It compares the optimal block choice with the situation in which an initial
+admissible submultiset has already been extracted.
+
+\begin{lemma}[Extraction inequality]\label{lem:H2-extraction}
+Let $U$ be a finite submultiset of $M$ satisfying
+\[
+  |U|\geq n,
+  \qquad n\mid |U|.
+\]
+Then
+\begin{equation}\label{eq:H2-extraction}
+  d\sum_{u\in U}u+\Phi_{d-1}(M\setminus U)\geq \Phi_d(M).
+\end{equation}
+Equality holds if and only if $|U|=n$ and $U=B_1(M)$, up to interchanging equal-valued slots.
+\end{lemma}
+
+\begin{proof}
+Give weight $d$ to every slot in $U$.
+Among the remaining slots, give weight $d-1$ to the first block of size $n$, weight $d-2$ to the next block,
+and so on down to weight $1$; all later slots have weight $0$.
+Then the left side of \eqref{eq:H2-extraction} is $\sum_c w(c)c$.
+
+For $1\leq h\leq d$, let $E_h$ be the set of slots with weight at least $h$.
+The layer-cake identity for nonnegative integer weights gives
+\[
+  \sum_c w(c)c=\sum_{h=1}^d\sum_{c\in E_h}c.
+\]
+Because $|U|\geq n$ and $n\mid |U|$, the set $E_h$ contains at least $(d+1-h)n$ slots:
+it contains $U$ and the first $(d-h)n$ slots of $M\setminus U$.  Therefore
+\[
+  \sum_{c\in E_h}c\geq c_1+c_2+\cdots+c_{(d+1-h)n}.
+\]
+Summing this inequality over $h=1,\ldots,d$ gives
+\[
+  \sum_c w(c)c\geq d\beta_1(M)+(d-1)\beta_2(M)+\cdots+\beta_d(M)=\Phi_d(M).
+\]
+
+For equality to hold, first $|U|$ must be exactly $n$;
+otherwise $E_d=U$ contains at least $2n$ positive slots,
+and the comparison with the first $n$ slots is strict.
+With $|U|=n$, equality in the $h=d$ inequality forces $U$ to be the first block $B_1(M)$,
+up to equal-valued slots.  Conversely, if $U=B_1(M)$, the two sides are exactly equal.
+\end{proof}
+
+
+\section{The reciprocal slot formula for $s_d(k)$}
+For $d\geq 1$ and $k>0$, define
+\[
+  M_d(k-1) \coloneq \min_{(m_1,\ldots,m_d)\in\Tdk}\left(m_1+2m_2+\cdots+dm_d\right),
+\]
+so that, by the definition of $s_d$, we have $s_d(k)=dk+M_d(k-1)$.
+
+For $k>0$, write
+\[ k-1=\sum_{e\geq 0}a_ep^e, \qquad 0\leq a_e\leq p-1.  \]
+Define the \emph{complementary digit-slot multiset}
+\begin{equation}\label{eq:H2-Ak}
+  \Slots_p(k-1) \coloneq \{p^e\text{ repeated }p-1-a_e\text{ times}\}_{e\geq 0}.
+\end{equation}
+This multiset is infinite, because $a_e=0$ for all sufficiently large $e$.
+The interpretation is simple:
+$\Slots_p(k-1)$ lists the base-$p$ digit slots that can be added to $k-1$ without producing a carry.
+
+Recalling our block notation from \Cref{sec:block}, we choose
+\begin{align*}
+  n &\coloneq p-1 \\
+  M &= \Slots_p(k-1)
+\end{align*}
+and abbreviate
+\[
+  B_r(k-1) \coloneq B_r(\Slots_p(k-1))\qquad {\text {\rm and}}\qquad \beta_r(k-1) \coloneq \beta_r(\Slots_p(k-1)).
+\]
+We now give the main result of this section,
+a formula for $s_d(k)$ in terms of these blocks.
+\begin{theorem}[Reciprocal slot formula]\label{thm:H2-slot-formula}
+For $q=p$, $d\geq 1$, and $k>0$,
+\begin{equation}\label{eq:H2-slot-formula}
+  s_d(k)=dk+d\beta_1(k-1)+(d-1)\beta_2(k-1)+\cdots+\beta_d(k-1).
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+  We identify each $m_i$ with a sum of powers of $p$ given by its base-$p$ representation;
+  let \[ T_i \subseteq \Slots_p(k-1) \] be the corresponding powers of $p$
+  (so that $m_i = \sum_{c \in T_i} c$).
+  Then the requirement $\mathbf{m} \in \Tdk$ translates as:
+  \begin{itemize}
+    \item The condition $n \mid m_i$ and $m_i > 0$
+      means each $T_i$ is nonempty and $|T_i|$ is divisible by $n$
+      (because $c \equiv 1 \pmod{p-1}$ for all $c \in T_i$).
+    \item The carry-free condition says that the $T_i$ are pairwise
+      disjoint submultisets of $\Slots_p(k-1)$.
+  \end{itemize}
+  If $|T_i|\geq 2n$ for any $i$, removing the largest $n$ slots from $T_i$
+  leaves a nonempty set of cardinality divisible by $n$ and strictly lowers the exponent.
+  Thus, we may as well assume in fact that $|T_i| = n$ for every $i$.
+
+  The block-rearrangement inequality \Cref{lem:H2-block-min} now gives
+  \[ M_d(k-1) = \min_{\substack{|T_i|=n \\ \bigsqcup T_i \subseteq \Slots_p(k-1)}}
+    \left( \sum_{c \in T_1} c + 2 \sum_{c \in T_2} c + \dots
+    \right) = d\beta_1(k-1)+\dots+\beta_d(k-1) \]
+  which is what we wanted to prove.
+\end{proof}
+
+The case $d=1$ is worth isolating because it identifies the first block with the shift from $k$ to $s_1(k)$,
+which is the shift appearing in H2.
+
+\begin{corollary}[The first reciprocal block]\label{cor:H2-s1}
+Assume $q=p$ and let $k>0$.  In degree one,
+the leading exponent is obtained by using the first admissible reciprocal block.  Equivalently,
+\[
+  s_1(k)=k+\beta_1(k-1).
+\]
+\end{corollary}
+
+\section{Main proof}
+Abbreviate
+\[
+  M \coloneq \Slots_p(k-1) \qquad{\text{and}}\qquad \beta_r \coloneq \beta_r(M).
+\]
+By \Cref{cor:H2-s1}, we have
+\[
+  s_1(k)=k+\beta_1.
+\]
+For an admissible $j$, we have the requirement
+\[ 0 \not\equiv \binom{s_1(k)+j-1}{k-1} = \binom{(k-1)+u}{k-1} \pmod p
+  \quad\text{where} \quad u \coloneq \beta_1+j.  \]
+By \Cref{lem:Lucas-binomial},
+we may identify $u$ via its base-$p$ digits
+with a unique finite submultiset $U \subseteq M$.
+Since $n \mid \beta_1$ and $n \mid j$, we still have $n \mid u$ and thus as before $|U|$
+is a positive multiple of $n$.
+
+The slots used by $u$ are precisely removed from the complement
+when one passes from $k$ to $s_1(k)+j=k+u$, meaning
+\[
+  \Slots_p((k-1)+u) = M \setminus U.
+\]
+Using \Cref{thm:H2-slot-formula} with $d-1$ in place of $d$, we obtain
+\begin{align*}
+  s_{d-1}(s_1(k)+j)+s_1(k)+j
+  &= s_{d-1}(k+u) + (k+u) \\
+  &= \left( (d-1)(k+u) + \Phi_{d-1}(M \setminus U) \right) + (k+u) \\
+  &= d(k+u)+\Phi_{d-1}(M\setminus U)\\
+  &= dk+\left(d\sum_{c\in U}c+\Phi_{d-1}(M\setminus U)\right)
+  \ge dk + \Phi_d(M)
+\end{align*}
+with the last inequality by the extraction inequality \Cref{lem:H2-extraction}.
+
+We need to verify the only equality case is $j = 0$.
+For $j=0$, we have $u=\beta_1$, and $U$ is exactly the first block $B_1(M)$; hence equality holds.
+If $j>0$, then $u>\beta_1$, so $U$ cannot be the first block $B_1(M)$ as a multiset of values.
+The equality condition in \Cref{lem:H2-extraction} is impossible, and the inequality is strict.
+Thus the minimum is attained uniquely at $j=0$.
+
+\end{document}
