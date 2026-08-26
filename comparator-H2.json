@@ -1,0 +1,14 @@
+{
+  "challenge_module": "H2.problem",
+  "solution_module": "H2.solution",
+  "theorem_names": [
+    "main_zero_mem",
+    "main"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": false
+}

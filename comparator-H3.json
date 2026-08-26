@@ -1,0 +1,16 @@
+{
+  "challenge_module": "H3.problem",
+  "solution_module": "H3.solution",
+  "theorem_names": [
+    "main_theorem",
+    "Tset_nonempty",
+    "Md_attained",
+    "Md_le"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": false
+}

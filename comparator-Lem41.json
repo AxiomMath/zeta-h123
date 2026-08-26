@@ -1,0 +1,17 @@
+{
+  "challenge_module": "Lem41.problem",
+  "solution_module": "Lem41.solution",
+  "theorem_names": [
+    "main",
+    "monicOf_monic",
+    "monicOf_natDegree",
+    "monicOf_injective",
+    "monicOf_surjective"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": false
+}
