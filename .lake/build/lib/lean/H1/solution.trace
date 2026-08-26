@@ -1,0 +1,174 @@
+{"synthetic": false,
+ "schemaVersion": "2025-09-10",
+ "outputs":
+ {"o": ["9c3a1fddfb03401c.olean"],
+  "i": "af03979524a9b1de.ilean",
+  "c": "91b3853146006db0.c"},
+ "log":
+ [{"message":
+   ".> LEAN_PATH=/home/kc_ke/Publications/zeta-h123/.lake/packages/Cli/.lake/build/lib/lean:/home/kc_ke/Publications/zeta-h123/.lake/packages/batteries/.lake/build/lib/lean:/home/kc_ke/Publications/zeta-h123/.lake/packages/Qq/.lake/build/lib/lean:/home/kc_ke/Publications/zeta-h123/.lake/packages/aesop/.lake/build/lib/lean:/home/kc_ke/Publications/zeta-h123/.lake/packages/proofwidgets/.lake/build/lib/lean:/home/kc_ke/Publications/zeta-h123/.lake/packages/importGraph/.lake/build/lib/lean:/home/kc_ke/Publications/zeta-h123/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/home/kc_ke/Publications/zeta-h123/.lake/packages/plausible/.lake/build/lib/lean:/home/kc_ke/Publications/zeta-h123/.lake/packages/mathlib/.lake/build/lib/lean:/home/kc_ke/Publications/zeta-h123/.lake/build/lib/lean /home/kc_ke/.elan/toolchains/leanprover--lean4---v4.28.0/bin/lean /home/kc_ke/Publications/zeta-h123/H1/solution.lean -o /home/kc_ke/Publications/zeta-h123/.lake/build/lib/lean/H1/solution.olean -i /home/kc_ke/Publications/zeta-h123/.lake/build/lib/lean/H1/solution.ilean -c /home/kc_ke/Publications/zeta-h123/.lake/build/ir/H1/solution.c --setup /home/kc_ke/Publications/zeta-h123/.lake/build/ir/H1/solution.setup.json --json",
+   "level": "trace"},
+  {"message":
+   "H1/solution.lean:295:26: unused variable `k`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "H1/solution.lean:362:34: this tactic is never executed\n\nNote: This linter can be disabled with `set_option linter.unreachableTactic false`",
+   "level": "warning"},
+  {"message":
+   "H1/solution.lean:362:34: 'ring' tactic does nothing\n\nNote: This linter can be disabled with `set_option linter.unusedTactic false`",
+   "level": "warning"},
+  {"message":
+   "H1/solution.lean:322:100: This line exceeds the 100 character limit, please shorten it!\n\nNote: This linter can be disabled with `set_option linter.style.longLine false`",
+   "level": "warning"},
+  {"message":
+   "H1/solution.lean:324:100: This line exceeds the 100 character limit, please shorten it!\n\nNote: This linter can be disabled with `set_option linter.style.longLine false`",
+   "level": "warning"},
+  {"message":
+   "H1/solution.lean:329:100: This line exceeds the 100 character limit, please shorten it!\n\nNote: This linter can be disabled with `set_option linter.style.longLine false`",
+   "level": "warning"},
+  {"message":
+   "H1/solution.lean:457:36: unused variable `hq`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "H1/solution.lean:470:100: This line exceeds the 100 character limit, please shorten it!\n\nNote: This linter can be disabled with `set_option linter.style.longLine false`",
+   "level": "warning"},
+  {"message":
+   "H1/solution.lean:472:100: This line exceeds the 100 character limit, please shorten it!\n\nNote: This linter can be disabled with `set_option linter.style.longLine false`",
+   "level": "warning"},
+  {"message":
+   "H1/solution.lean:457:60: missing space in the source\n\nThis part of the code\n  '(d+1) →'\nshould be written as\n  '(d + 1)'\n\n\nNote: This linter can be disabled with `set_option linter.style.whitespace false`",
+   "level": "warning"},
+  {"message":
+   "H1/solution.lean:458:15: missing space in the source\n\nThis part of the code\n  '(d+1) →'\nshould be written as\n  '(d + 1)'\n\n\nNote: This linter can be disabled with `set_option linter.style.whitespace false`",
+   "level": "warning"},
+  {"message":
+   "H1/solution.lean:458:36: missing space in the source\n\nThis part of the code\n  '(d+1)) (j'\nshould be written as\n  '(d + 1))'\n\n\nNote: This linter can be disabled with `set_option linter.style.whitespace false`",
+   "level": "warning"},
+  {"message":
+   "H1/solution.lean:459:14: missing space in the source\n\nThis part of the code\n  '(jj:ℕ) ='\nshould be written as\n  '(jj : ℕ)'\n\n\nNote: This linter can be disabled with `set_option linter.style.whitespace false`",
+   "level": "warning"},
+  {"message":
+   "H1/solution.lean:509:34: 'simp' is a flexible tactic modifying '⊢'. Try 'simp?' and use the suggested 'simp only [...]'. Alternatively, use `suffices` to explicitly state the simplified form.\n\nNote: This linter can be disabled with `set_option linter.flexible false`",
+   "level": "warning"},
+  {"message":
+   "H1/solution.lean:509:34: Try this:\n  [apply] simp only [mem_filter, mem_univ, true_and]",
+   "level": "info"},
+  {"message":
+   "H1/solution.lean:509:40: 'exact ⟨hi, Nat.pos_of_ne_zero hr⟩' uses '⊢'!",
+   "level": "info"},
+  {"message":
+   "H1/solution.lean:528:34: 'simp' is a flexible tactic modifying '⊢'. Try 'simp?' and use the suggested 'simp only [...]'. Alternatively, use `suffices` to explicitly state the simplified form.\n\nNote: This linter can be disabled with `set_option linter.flexible false`",
+   "level": "warning"},
+  {"message":
+   "H1/solution.lean:528:34: Try this:\n  [apply] simp only [mem_filter, mem_univ, true_and]",
+   "level": "info"},
+  {"message":
+   "H1/solution.lean:528:40: 'exact ⟨hid, Nat.pos_of_ne_zero hr⟩' uses '⊢'!",
+   "level": "info"},
+  {"message":
+   "H1/solution.lean:498:55: missing space in the source\n\nThis part of the code\n  '(d+1) →'\nshould be written as\n  '(d + 1)'\n\n\nNote: This linter can be disabled with `set_option linter.style.whitespace false`",
+   "level": "warning"},
+  {"message":
+   "H1/solution.lean:540:58: unused variable `hjm`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "H1/solution.lean:542:5: unused variable `hr0`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "H1/solution.lean:651:5: unused variable `hjtop`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "H1/solution.lean:1224:4: The `show` tactic should only be used to indicate intermediate goal states for readability.\nHowever, this tactic invocation changed the goal. Please use `change` instead for these purposes.\n\nNote: This linter can be disabled with `set_option linter.style.show false`",
+   "level": "warning"},
+  {"message":
+   "H1/solution.lean:1276:24: This simp argument is unused:\n  if_pos rfl\n\nHint: Omit it from the simp argument list.\n  simp only [hkk'def, if_p̵o̵s̵ ̵r̵f̵l̵,̵ ̵i̵f̵_̵neg hIJT, if_neg hIIT, if_neg hIJ, if_true, add_zero,\n  ̵  ̵ ̵ ̵ ̵ ̵Nat.sub_zero]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "H1/solution.lean:1279:42: This simp argument is unused:\n  if_pos rfl\n\nHint: Omit it from the simp argument list.\n  simp only [hkk'def, if_neg hIJT.symm, i̵f̵_̵p̵o̵s̵ ̵r̵f̵l̵,̵ ̵if_neg hITJT.symm, if_neg hJJT.symm, if_true, add_zero,\n  ̲  ̲ ̲ ̲ ̲ ̲Nat.sub_zero]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "H1/solution.lean:1257:100: This line exceeds the 100 character limit, please shorten it!\n\nNote: This linter can be disabled with `set_option linter.style.longLine false`",
+   "level": "warning"},
+  {"message":
+   "H1/solution.lean:1325:100: This line exceeds the 100 character limit, please shorten it!\n\nNote: This linter can be disabled with `set_option linter.style.longLine false`",
+   "level": "warning"},
+  {"message":
+   "H1/solution.lean:1330:100: This line exceeds the 100 character limit, please shorten it!\n\nNote: This linter can be disabled with `set_option linter.style.longLine false`",
+   "level": "warning"},
+  {"message":
+   "H1/solution.lean:1347:100: This line exceeds the 100 character limit, please shorten it!\n\nNote: This linter can be disabled with `set_option linter.style.longLine false`",
+   "level": "warning"},
+  {"message":
+   "H1/solution.lean:1355:100: This line exceeds the 100 character limit, please shorten it!\n\nNote: This linter can be disabled with `set_option linter.style.longLine false`",
+   "level": "warning"},
+  {"message":
+   "H1/solution.lean:1437:100: This line exceeds the 100 character limit, please shorten it!\n\nNote: This linter can be disabled with `set_option linter.style.longLine false`",
+   "level": "warning"},
+  {"message":
+   "H1/solution.lean:1474:100: This line exceeds the 100 character limit, please shorten it!\n\nNote: This linter can be disabled with `set_option linter.style.longLine false`",
+   "level": "warning"},
+  {"message":
+   "H1/solution.lean:1505:100: This line exceeds the 100 character limit, please shorten it!\n\nNote: This linter can be disabled with `set_option linter.style.longLine false`",
+   "level": "warning"},
+  {"message":
+   "H1/solution.lean:1617:100: This line exceeds the 100 character limit, please shorten it!\n\nNote: This linter can be disabled with `set_option linter.style.longLine false`",
+   "level": "warning"},
+  {"message":
+   "H1/solution.lean:1626:100: This line exceeds the 100 character limit, please shorten it!\n\nNote: This linter can be disabled with `set_option linter.style.longLine false`",
+   "level": "warning"},
+  {"message":
+   "H1/solution.lean:1640:100: This line exceeds the 100 character limit, please shorten it!\n\nNote: This linter can be disabled with `set_option linter.style.longLine false`",
+   "level": "warning"},
+  {"message":
+   "H1/solution.lean:1650:100: This line exceeds the 100 character limit, please shorten it!\n\nNote: This linter can be disabled with `set_option linter.style.longLine false`",
+   "level": "warning"},
+  {"message":
+   "H1/solution.lean:1696:4: The `show` tactic should only be used to indicate intermediate goal states for readability.\nHowever, this tactic invocation changed the goal. Please use `change` instead for these purposes.\n\nNote: This linter can be disabled with `set_option linter.style.show false`",
+   "level": "warning"},
+  {"message":
+   "H1/solution.lean:1804:6: 'simp at hrep' is a flexible tactic modifying 'hrep'. Try 'simp?' and use the suggested 'simp only [...]'. Alternatively, use `suffices` to explicitly state the simplified form.\n\nNote: This linter can be disabled with `set_option linter.flexible false`",
+   "level": "warning"},
+  {"message": "H1/solution.lean:1806:6: 'rw [hcm, hdigrec, hrep]' uses 'hrep'!",
+   "level": "info"},
+  {"message":
+   "H1/solution.lean:1846:2: The `show` tactic should only be used to indicate intermediate goal states for readability.\nHowever, this tactic invocation changed the goal. Please use `change` instead for these purposes.\n\nNote: This linter can be disabled with `set_option linter.style.show false`",
+   "level": "warning"},
+  {"message":
+   "H1/solution.lean:1907:22: unused variable `hi₀`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "H1/solution.lean:1907:38: unused variable `hj₀`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "H1/solution.lean:2123:29: unused variable `hadma`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "H1/solution.lean:2124:20: unused variable `hi₀`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "H1/solution.lean:2124:68: unused variable `hij`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"}],
+ "inputs":
+ [["H1.solution:deps",
+   [["deps",
+     [["ZetaH123/ZetaH123:extraDep",
+       [["@ZetaH123:extraDep", "00000000000006bb"]]],
+      ["imports",
+       [["Mathlib transitive imports (legacy)", "8fd896a9b3011bd6"],
+        ["Mathlib:importAllArts", "8fc2a9ec06d95bdc"]]]]],
+    ["libs",
+     [["import dynlibs", "00000000000006bb"],
+      ["package external libraries", "00000000000006bb"],
+      ["module dynlibs", "00000000000006bb"],
+      ["module plugins", "00000000000006bb"]]]]],
+  ["Lean 4.28.0, commit 7e01a1bf5c70fc6167d49c345d3bf80596e9a79b",
+   "a96bc04a2e5e9630"],
+  ["/home/kc_ke/Publications/zeta-h123/H1/solution.lean", "ad70ee928a19b085"],
+  ["options",
+   [["-DmaxSynthPendingDepth=3", "c78e353d34de85d4"],
+    ["-Dweak.linter.mathlibStandardSet=true", "8a155799906f2b42"],
+    ["-DrelaxedAutoImplicit=false", "74a2b5546b55be80"],
+    ["-Dpp.unicode.fun=true", "9b94070140457fab"],
+    ["-DautoImplicit=false", "4a85acb881fd49d0"]]],
+  ["Module.leanArgs: #[]", "00000000000006bb"]],
+ "depHash": "922bc25e155e8486"}

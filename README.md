@@ -35,7 +35,10 @@ due to the evolving nature of the Lean 4 compiler and its core libraries.
 This repository can be verified against the formal problem statement with the Lean comparator on a Linux machine. First, follow the instructions in [https://github.com/leanprover/comparator](https://github.com/leanprover/comparator) to install comparator. Then, run the following command:
 
 ```
-lake env comparator comparator.json
+lake env comparator comparator-H1.json
+lake env comparator comparator-H2.json
+lake env comparator comparator-H3.json
+lake env comparator comparator-Lem41.json
 ```
 
 ## License
